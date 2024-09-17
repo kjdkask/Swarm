@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+ wordpress_kj:
+  image: wordpress
+  ports:
+  - 91:80
+  environment:
+    WORDPRESS_DB_HOST: mysql_kjtest
+    WORDPRESS_DB_USER: test
+    WORDPRESS_DB_PASSWORD: test111
+    WORDPRESS_DB_NAME: kjdata
+
+
+ mysql_kjtest:
+  image: mysql
+  restart: always
+  environment:
+    MYSQL_USER: test
+    MYSQL_PASSWORD : test111
+    MYSQL_ROOT_PASSWORD: pass123 
+    MYSQL_DATABASE: kjdata
+    
+ phpmyadmin_kj:
+  image: phpmyadmin
+  restart: always
+  ports: 
+   - 90:80
+  environment:
+    PMA_HOST: mysql_kjtest
